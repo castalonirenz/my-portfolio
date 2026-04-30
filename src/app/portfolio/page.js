@@ -11,32 +11,46 @@ const navigation = [
   { label: 'Contact', href: '/contact' },
 ]
 
-const categories = ['All', 'UI/UX', 'Frontend', 'Mobile']
+const categories = ['All', 'UI/UX', 'Frontend', 'Mobile', "Backend"]
 
 const projects = [
- 
+
   {
     id: 'web',
     title: 'Rnz App',
     category: 'Frontend',
     summary: 'Financial tracker/monitoring.',
     url: 'https://rnz-app-sepia.vercel.app/',
+    repo: "https://github.com/castalonirenz/RnzApp",
     stack: ['Next.js', 'React', 'Bootstrap', 'Node js', 'Express', 'MongoDB'],
   },
   {
     id: 'web',
     title: 'Official Ride Share',
-    category: 'Frontend + Backend',
+    category: 'Frontend',
     summary: 'Ride sharing offer or book a ride.',
     url: 'https://office-ride-share.vercel.app/',
+    repo: 'https://github.com/castalonirenz/OfficeRideShare',
+
     stack: ['Next.js', 'React', 'Bootstrap', 'Node js', 'Express', 'MongoDB'],
   },
   {
-    id: 'scale',
-    title: 'SaaS Marketing Platform',
-    category: 'Frontend',
-    summary: 'Migrated legacy pages to a component-driven architecture.',
-    url: '40% faster page publishing for internal teams',
+    id: 'web',
+    title: 'Official Ride Share API',
+    category: 'Backend',
+    summary: 'API for ride sharing offer or book a ride.',
+    url: null,
+    repo: 'https://github.com/castalonirenz/OfficeRideShareApi',
+    stack: ['Next.js', 'CMS', 'Component Library'],
+  },
+
+  {
+    id: 'web',
+    title: 'RNZ App API',
+    category: 'Backend',
+    summary: 'API for financial tracker/monitoring.',
+    url: null,
+    repo: 'https://github.com/castalonirenz/RnzAppApi',
     stack: ['Next.js', 'CMS', 'Component Library'],
   },
 ]
@@ -84,11 +98,10 @@ export default function PortfolioPage() {
                 key={category}
                 type="button"
                 onClick={() => setActiveCategory(category)}
-                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${
-                  activeCategory === category
+                className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${activeCategory === category
                     ? 'bg-amber-200 text-slate-900'
                     : 'border border-white/20 text-slate-300 hover:border-amber-300/40 hover:text-amber-100'
-                }`}
+                  }`}
               >
                 {category}
               </button>
@@ -107,6 +120,13 @@ export default function PortfolioPage() {
               <p className="text-xs uppercase tracking-[0.13em] text-amber-200">{project.category}</p>
               <h2 className="mt-3 text-2xl font-semibold text-white">{project.title}</h2>
               <p className="mt-3 text-sm leading-6 text-slate-300">{project.summary}</p>
+              <div>
+                {project.repo && (
+                  <a href={project.repo} target="_blank" rel="noopener noreferrer" className="text-amber-200 hover:underline">
+                    View Repository
+                  </a>
+                )}
+              </div>
               <a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-200">
                 Visit Project
               </a>
