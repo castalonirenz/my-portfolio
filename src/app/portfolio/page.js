@@ -6,7 +6,6 @@ import { useMemo, useState } from 'react'
 const navigation = [
   { label: 'Home', href: '/' },
   { label: 'Dashboard', href: '/dashboard' },
-  { label: 'Testimonials', href: '/testimonials' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
@@ -51,6 +50,39 @@ const projects = [
     summary: 'API for financial tracker/monitoring.',
     url: null,
     repo: 'https://github.com/castalonirenz/RnzAppApi',
+    stack: ['Next.js', 'CMS', 'Component Library'],
+  },
+
+
+  {
+    id: 'mobile',
+    title: 'Enterprise Philippine Tax Calendar',
+    category: 'Mobile',
+    summary: 'Tracking of government tax deadlines and requirements.',
+    url: null,
+    repo: null,
+     stack: ['React-Native', 'Styled Components'],
+  },
+  {
+    id: 'mobile',
+    title: 'Enterprise Philippine Tax Code',
+    category: 'Mobile',
+    summary: 'Tracking of government tax laws and regulations.',
+    url: null,
+    repo: null,
+    stack: ['React-Native', 'Styled Components'],
+  },
+
+
+  
+
+      {
+    id: 'mobile',
+    title: 'Some internal projects',
+    category: 'Frontend',
+    summary: 'Internal project that cannot be disclose due to firm policy.',
+    url: null,
+    repo: null,
     stack: ['Next.js', 'CMS', 'Component Library'],
   },
 ]
@@ -99,8 +131,8 @@ export default function PortfolioPage() {
                 type="button"
                 onClick={() => setActiveCategory(category)}
                 className={`rounded-full px-4 py-2 text-sm font-semibold transition-colors ${activeCategory === category
-                    ? 'bg-amber-200 text-slate-900'
-                    : 'border border-white/20 text-slate-300 hover:border-amber-300/40 hover:text-amber-100'
+                  ? 'bg-amber-200 text-slate-900'
+                  : 'border border-white/20 text-slate-300 hover:border-amber-300/40 hover:text-amber-100'
                   }`}
               >
                 {category}
