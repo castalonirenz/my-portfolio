@@ -169,7 +169,7 @@ export default function DashboardPage() {
                 <div id="hero" className="mt-6 grid gap-6 border-b border-white/10 pb-6 lg:grid-cols-[1.25fr_0.9fr]">
                   <div className="animate-slide-up">
                     <p className="text-3xl leading-tight text-slate-300">I&apos;m</p>
-                    <h1 className="mt-1 text-4xl font-bold leading-tight text-white sm:text-5xl">James Adams</h1>
+                    <h1 className="mt-1 text-4xl font-bold leading-tight text-white sm:text-5xl">Renz Castaloni</h1>
                     <p className="mt-4 max-w-md text-sm leading-6 text-slate-300/90">
                       A freelancer who builds premium digital products for startups and modern teams.
                       Blending design, development, and strategy into measurable outcomes.
@@ -349,7 +349,7 @@ export default function DashboardPage() {
 
                   <div className="mt-5">
                     <p className="text-2xl text-slate-300">I&apos;m</p>
-                    <h2 className="text-4xl font-bold text-white">James Adams</h2>
+                    <h2 className="text-4xl font-bold text-white">Renz Castaloni</h2>
                     <p className="mt-4 text-sm leading-6 text-slate-300/85">
                       Freelance product builder for brands that need clean interfaces and reliable systems.
                     </p>

@@ -12,12 +12,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "James Adams Portfolio | Product Designer and Frontend Developer",
+  title: "Renz Castaloni Portfolio | Product Designer and Frontend Developer",
   description: "Multi-page portfolio with case studies, testimonials, about, and contact experience.",
   keywords: ["portfolio", "product designer", "frontend developer", "next.js", "tailwind"],
-  author: "James Adams",
+  author: "Renz Castaloni",
   openGraph: {
-    title: "James Adams Portfolio",
+    title: "Renz Castaloni Portfolio",
     description: "Portfolio website with dashboard, case studies, testimonials, and contact page.",
     type: "website",
   },

@@ -14,36 +14,29 @@ const navigation = [
 const categories = ['All', 'UI/UX', 'Frontend', 'Mobile']
 
 const projects = [
+ 
   {
-    id: 'design',
-    title: 'Creator Studio Redesign',
-    category: 'UI/UX',
-    summary: 'Rebuilt onboarding and navigation for a creator platform.',
-    result: '21% more completed onboarding flows',
-    stack: ['Figma', 'Research', 'Design System'],
+    id: 'web',
+    title: 'Rnz App',
+    category: 'Frontend',
+    summary: 'Financial tracker/monitoring.',
+    url: 'https://rnz-app-sepia.vercel.app/',
+    stack: ['Next.js', 'React', 'Bootstrap', 'Node js', 'Express', 'MongoDB'],
   },
   {
     id: 'web',
-    title: 'Analytics Dashboard',
-    category: 'Frontend',
-    summary: 'Interactive dashboard with role-based widgets and data drill-down.',
-    result: '32% faster decision cycles for operations team',
-    stack: ['Next.js', 'React', 'Tailwind CSS'],
-  },
-  {
-    id: 'mobile',
-    title: 'Booking Mobile Experience',
-    category: 'Mobile',
-    summary: 'Built a mobile-first booking funnel focused on fewer steps.',
-    result: '18% increase in booking completion',
-    stack: ['React Native', 'UX Writing', 'A/B Testing'],
+    title: 'Official Ride Share',
+    category: 'Frontend + Backend',
+    summary: 'Ride sharing offer or book a ride.',
+    url: 'https://office-ride-share.vercel.app/',
+    stack: ['Next.js', 'React', 'Bootstrap', 'Node js', 'Express', 'MongoDB'],
   },
   {
     id: 'scale',
     title: 'SaaS Marketing Platform',
     category: 'Frontend',
     summary: 'Migrated legacy pages to a component-driven architecture.',
-    result: '40% faster page publishing for internal teams',
+    url: '40% faster page publishing for internal teams',
     stack: ['Next.js', 'CMS', 'Component Library'],
   },
 ]
@@ -64,7 +57,7 @@ export default function PortfolioPage() {
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
         <header className="animate-fade-in flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900/70 px-5 py-4">
           <Link href="/" className="text-lg font-bold tracking-wide text-white">
-            James Adams
+            Renz Castaloni
           </Link>
 
           <nav className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
@@ -114,9 +107,9 @@ export default function PortfolioPage() {
               <p className="text-xs uppercase tracking-[0.13em] text-amber-200">{project.category}</p>
               <h2 className="mt-3 text-2xl font-semibold text-white">{project.title}</h2>
               <p className="mt-3 text-sm leading-6 text-slate-300">{project.summary}</p>
-              <p className="mt-3 rounded-lg border border-emerald-300/20 bg-emerald-300/10 px-3 py-2 text-sm text-emerald-200">
-                Result: {project.result}
-              </p>
+              <a href={project.url} target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-200">
+                Visit Project
+              </a>
 
               <div className="mt-4 flex flex-wrap gap-2">
                 {project.stack.map((item) => (

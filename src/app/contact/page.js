@@ -39,7 +39,7 @@ export default function ContactPage() {
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
         <header className="animate-fade-in flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900/70 px-5 py-4">
           <Link href="/" className="text-lg font-bold tracking-wide text-white">
-            James Adams
+            Renz Castaloni
           </Link>
 
           <nav className="flex flex-wrap items-center gap-3 text-sm text-slate-300">

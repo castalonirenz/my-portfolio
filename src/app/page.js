@@ -28,9 +28,9 @@ const highlights = [
 ]
 
 const projects = [
-  { name: 'Creator Landing Page', type: 'UI/UX + Frontend', result: '48% engagement uplift' },
-  { name: 'B2B Product Dashboard', type: 'Product Design + React', result: '30% faster reporting' },
-  { name: 'Mobile Booking App', type: 'Cross-platform UX', result: '4.8 average app rating' },
+  { name: 'Rnz App', type: 'Frontend + Backend', description: 'Financial tracker/monitoring.' },
+  { name: 'Official Ride Share', type: 'Frontend + Backend', description: 'Ride sharing' },
+  { name: 'Internal projects', type: 'Frontend', description: 'Cannot disclose firm policy.' },
 ]
 
 export default function HomePage() {
@@ -43,7 +43,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
           <header className="animate-fade-in flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900/70 px-5 py-4 backdrop-blur">
             <Link href="/" className="text-lg font-bold tracking-wide text-white">
-              James Adams
+              Renz Castaloni
             </Link>
 
             <nav className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
@@ -62,12 +62,11 @@ export default function HomePage() {
               </p>
 
               <h1 className="mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                I design and ship high-quality digital products.
+                I am a Frontend Developer 
               </h1>
 
               <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
-                Explore a complete multi-page portfolio experience with production-style sections, real navigation,
-                working interactions, and animated UI blocks.
+               "dedicated to building high-quality digital products using React and Next.js. I bring an intermediate understanding of backend systems, including Node.js, Laravel, and FastAPI, which allows me to develop seamless, data-driven interfaces. My experience extends to managing MySQL and MongoDB databases, ensuring that every design I ship is supported by efficient, well-integrated server logic."
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -81,15 +80,16 @@ export default function HomePage() {
 
               <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 rounded-2xl border border-white/10 bg-slate-900/60 p-4">
                 <div>
-                  <p className="text-2xl font-bold text-white">250+</p>
+                  
+                  <p className="text-2xl font-bold text-white">9</p>
                   <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Projects</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">100+</p>
+                  <p className="text-2xl font-bold text-white">2</p>
                   <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Clients</p>
                 </div>
                 <div>
-                  <p className="text-2xl font-bold text-white">10+</p>
+                  <p className="text-2xl font-bold text-white">7+</p>
                   <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Years</p>
                 </div>
               </div>
@@ -129,7 +129,7 @@ export default function HomePage() {
                 >
                   <p className="text-xs uppercase tracking-[0.14em] text-amber-200">{project.type}</p>
                   <h3 className="mt-3 text-xl font-semibold text-white">{project.name}</h3>
-                  <p className="mt-3 text-sm leading-6 text-slate-300">Result: {project.result}</p>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">{project.description}</p>
                   <Link href="/portfolio" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-200">
                     View details
                     <span aria-hidden>-&gt;</span>
