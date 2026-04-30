@@ -78,7 +78,7 @@ export default function Dashboard() {
           </div>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mt-xl">
+          <div className="grid dark grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mt-xl">
             {stats.map((stat, idx) => (
               <div
                 key={idx}
@@ -121,7 +121,7 @@ export default function Dashboard() {
         <div className="animate-fadeIn">
           {/* Overview Tab */}
           {activeTab === 'overview' && (
-            <div className="space-y-xl">
+            <div className="dark space-y-xl">
               <div className="card">
                 <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-md">
                   Recent Activity
@@ -147,7 +147,7 @@ export default function Dashboard() {
 
           {/* Projects Tab */}
           {activeTab === 'projects' && (
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-lg">
+            <div className=" dark grid grid-cols-1 lg:grid-cols-2 gap-lg">
               {projects.map((project) => (
                 <div key={project.id} className="card">
                   <div className="flex items-start justify-between mb-md">
@@ -206,7 +206,7 @@ export default function Dashboard() {
 
           {/* Skills Tab */}
           {activeTab === 'skills' && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-lg">
+            <div className="dark grid grid-cols-1 md:grid-cols-2 gap-lg">
               {skills.map((skillGroup, idx) => (
                 <div key={idx} className="card">
                   <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-md">
