@@ -1,146 +1,178 @@
 import Link from 'next/link'
 
-export default function Home() {
-  const features = [
-    {
-      icon: '🚀',
-      title: 'Modern Stack',
-      description: 'Built with Next.js 16, React 19, and Tailwind CSS for optimal performance',
-    },
-    {
-      icon: '✨',
-      title: 'Responsive Design',
-      description: 'Beautiful on all devices with mobile-first approach and dark mode support',
-    },
-    {
-      icon: '⚡',
-      title: 'Fast & Optimized',
-      description: 'Lightning-fast load times with optimized images and code splitting',
-    },
-    {
-      icon: '🎨',
-      title: 'Customizable',
-      description: 'Fully customizable Tailwind theme with ready-to-use components',
-    },
-  ]
+const navigation = [
+  { label: 'Dashboard', href: '/dashboard' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '/contact' },
+]
 
+const highlights = [
+  {
+    title: 'Modern Stack',
+    description: 'Built with Next.js 16, React 19, and Tailwind CSS for speed and scale.',
+  },
+  {
+    title: 'Responsive Design',
+    description: 'Layouts are tuned for desktop, tablet, and mobile from the first draft.',
+  },
+  {
+    title: 'Performance Focus',
+    description: 'Every section is optimized for readable content and fast page transitions.',
+  },
+  {
+    title: 'Reusable Components',
+    description: 'Cards, buttons, and layout shells are reusable so growth stays maintainable.',
+  },
+]
+
+const projects = [
+  { name: 'Creator Landing Page', type: 'UI/UX + Frontend', result: '48% engagement uplift' },
+  { name: 'B2B Product Dashboard', type: 'Product Design + React', result: '30% faster reporting' },
+  { name: 'Mobile Booking App', type: 'Cross-platform UX', result: '4.8 average app rating' },
+]
+
+export default function HomePage() {
   return (
-    <main className="flex-grow">
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-primary-50 via-white to-secondary-50 dark:from-neutral-900 dark:via-neutral-900 dark:to-neutral-800 px-md sm:px-lg overflow-hidden">
-        <div className="container max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-xl items-center">
-            
-            {/* Left Content */}
-            <div className="animate-slideUp">
-              <div className="inline-flex items-center gap-sm mb-md px-md py-sm bg-primary-100 dark:bg-primary-900 rounded-full">
-                <span className="text-xs font-bold text-primary-700 dark:text-primary-300">
-                  Welcome to My Portfolio
-                </span>
-              </div>
+    <main className="min-h-screen bg-slate-950 text-slate-100">
+      <div className="relative isolate overflow-hidden">
+        <div className="pointer-events-none absolute -left-20 top-10 h-80 w-80 rounded-full bg-blue-500/15 blur-3xl" />
+        <div className="pointer-events-none absolute -right-20 top-36 h-96 w-96 rounded-full bg-amber-400/15 blur-3xl" />
 
-              <h1 className="text-5xl sm:text-6xl font-bold text-neutral-900 dark:text-white mb-md leading-tight">
-                Full Stack <span className="bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent">Developer</span>
-              </h1>
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+          <header className="animate-fade-in flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900/70 px-5 py-4 backdrop-blur">
+            <Link href="/" className="text-lg font-bold tracking-wide text-white">
+              James Adams
+            </Link>
 
-              <p className="text-xl text-neutral-600 dark:text-neutral-300 mb-xl leading-relaxed">
-                Crafting beautiful and functional digital experiences. Specialized in React, Next.js, and full-stack development.
+            <nav className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
+              {navigation.map((item) => (
+                <Link key={item.href} href={item.href} className="rounded-lg px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </header>
+
+          <section className="mt-8 grid gap-10 lg:grid-cols-[1.25fr_0.9fr] lg:items-center">
+            <div className="animate-slide-up">
+              <p className="inline-flex rounded-full border border-amber-200/30 bg-amber-200/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">
+                Freelancer Portfolio
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-md">
-                <Link href="/dashboard" className="btn-primary text-center justify-center">
-                  View Dashboard
+              <h1 className="mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                I design and ship high-quality digital products.
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
+                Explore a complete multi-page portfolio experience with production-style sections, real navigation,
+                working interactions, and animated UI blocks.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link href="/dashboard" className="btn-primary">
+                  Open Dashboard
                 </Link>
-                <a href="#projects" className="btn-outline text-center justify-center">
-                  Explore Work
-                </a>
+                <Link href="/portfolio" className="btn-outline">
+                  View Portfolio
+                </Link>
               </div>
 
-              <div className="grid grid-cols-3 gap-lg mt-2xl pt-xl border-t border-neutral-200 dark:border-neutral-700">
+              <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 rounded-2xl border border-white/10 bg-slate-900/60 p-4">
                 <div>
-                  <p className="text-3xl font-bold text-neutral-900 dark:text-white">12+</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Projects</p>
+                  <p className="text-2xl font-bold text-white">250+</p>
+                  <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Projects</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-neutral-900 dark:text-white">5+</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Years Exp</p>
+                  <p className="text-2xl font-bold text-white">100+</p>
+                  <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Clients</p>
                 </div>
                 <div>
-                  <p className="text-3xl font-bold text-neutral-900 dark:text-white">50+</p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">Tasks Done</p>
+                  <p className="text-2xl font-bold text-white">10+</p>
+                  <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Years</p>
                 </div>
               </div>
             </div>
 
-            {/* Right Visual */}
-            <div className="hidden lg:flex items-center justify-center">
-              <div className="relative w-full max-w-sm aspect-square">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-400 to-secondary-400 rounded-3xl opacity-20 blur-3xl animate-pulse"></div>
+            <div className="animate-scale-in card">
+              <h2 className="text-xl font-semibold text-white">Quick Access</h2>
+              <p className="mt-2 text-sm leading-6 text-slate-300">
+                Every page is connected so users can move across portfolio, testimonials, and contact details quickly.
+              </p>
 
-                <div className="relative h-full bg-white dark:bg-neutral-800 rounded-3xl shadow-2xl p-lg flex flex-col items-center justify-center">
-                  <div className="text-6xl mb-md">💻</div>
-                  <h3 className="text-2xl font-bold text-neutral-900 dark:text-white text-center mb-md">
-                    Full Stack Dev
-                  </h3>
-                  <div className="flex flex-wrap gap-sm justify-center">
-                    {['React', 'Next.js', 'Node.js', 'Tailwind'].map((tech, idx) => (
-                      <span
-                        key={idx}
-                        className="px-md py-sm bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 text-xs font-bold rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                </div>
+              <div className="mt-5 space-y-3">
+                {navigation.map((item) => (
+                  <Link
+                    key={`panel-${item.href}`}
+                    href={item.href}
+                    className="flex items-center justify-between rounded-xl border border-white/10 bg-slate-800/70 px-4 py-3 text-sm transition-colors hover:border-amber-300/40 hover:text-amber-100"
+                  >
+                    <span>{item.label}</span>
+                    <span aria-hidden>-&gt;</span>
+                  </Link>
+                ))}
               </div>
             </div>
+          </section>
 
-          </div>
+          <section id="projects" className="mt-16">
+            <h2 className="section-title">Featured Work</h2>
+            <p className="section-subtitle">Selected projects that combine product strategy, UX, and implementation.</p>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              {projects.map((project, index) => (
+                <article
+                  key={project.name}
+                  className="animate-slide-up card"
+                  style={{ animationDelay: `${index * 120}ms` }}
+                >
+                  <p className="text-xs uppercase tracking-[0.14em] text-amber-200">{project.type}</p>
+                  <h3 className="mt-3 text-xl font-semibold text-white">{project.name}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">Result: {project.result}</p>
+                  <Link href="/portfolio" className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-200">
+                    View details
+                    <span aria-hidden>-&gt;</span>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-16">
+            <h2 className="section-title">Why This Build Works</h2>
+            <p className="section-subtitle">The portfolio is now component-driven, linked, and ready for content updates.</p>
+
+            <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+              {highlights.map((item, index) => (
+                <article
+                  key={item.title}
+                  className="animate-slide-up card"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                  <p className="mt-3 text-sm leading-6 text-slate-300">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section className="mt-16 rounded-2xl border border-amber-200/25 bg-amber-200/10 px-6 py-8 text-center">
+            <h2 className="text-3xl font-bold text-white">Ready to collaborate?</h2>
+            <p className="mx-auto mt-3 max-w-2xl text-slate-200">
+              Visit the contact page to send project details, timeline, and goals.
+            </p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
+              <Link href="/contact" className="btn-primary">
+                Start a project
+              </Link>
+              <Link href="/testimonials" className="btn-soft">
+                Read testimonials
+              </Link>
+            </div>
+          </section>
         </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-2xl px-md sm:px-lg bg-white dark:bg-neutral-900">
-        <div className="container max-w-6xl mx-auto">
-          <div className="text-center mb-2xl">
-            <h2 className="section-title">Why Choose This Portfolio</h2>
-            <p className="section-subtitle">Modern tools and best practices</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
-            {features.map((feature, idx) => (
-              <div key={idx} className="card group">
-                <div className="text-4xl mb-md transition-transform duration-300 group-hover:scale-110">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg font-bold text-neutral-900 dark:text-white mb-sm">
-                  {feature.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                  {feature.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-2xl px-md sm:px-lg bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-900 dark:to-secondary-900">
-        <div className="container max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-white mb-md">Ready to Collaborate?</h2>
-          <p className="text-lg text-primary-100 mb-xl max-w-2xl mx-auto">
-            Let's build something amazing together. Check out my latest projects and reach out for opportunities.
-          </p>
-          <Link
-            href="/dashboard"
-            className="inline-flex items-center justify-center px-lg py-sm bg-white text-primary-600 font-bold rounded-lg hover:shadow-lg transition-all duration-200 hover:scale-105"
-          >
-            Visit Dashboard
-          </Link>
-        </div>
-      </section>
+      </div>
     </main>
   )
 }

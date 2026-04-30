@@ -1,233 +1,446 @@
 'use client'
 
-import React, { useState } from 'react'
+import Link from 'next/link'
+import { useMemo, useState } from 'react'
 
-export default function Dashboard() {
-  const [activeTab, setActiveTab] = useState('overview')
+const navigation = [
+  { label: 'Home', href: '/' },
+  { label: 'Portfolio', href: '/portfolio' },
+  { label: 'Testimonials', href: '/testimonials' },
+  { label: 'About', href: '/about' },
+]
 
-  const stats = [
-    { label: 'Total Projects', value: '12', icon: '📁', color: 'primary' },
-    { label: 'Completed Tasks', value: '48', icon: '✓', color: 'success' },
-    { label: 'Active Skills', value: '15', icon: '⚡', color: 'accent' },
-    { label: 'Years Experience', value: '5+', icon: '🎯', color: 'secondary' },
-  ]
+const socialLinks = [
+  { short: 'Dr', label: 'Dribbble', href: 'https://dribbble.com' },
+  { short: 'In', label: 'LinkedIn', href: 'https://linkedin.com' },
+  { short: 'Tw', label: 'X', href: 'https://x.com' },
+  { short: 'Gh', label: 'GitHub', href: 'https://github.com' },
+]
 
-  const projects = [
-    {
-      id: 1,
-      title: 'E-Commerce Platform',
-      description: 'Full-stack React & Node.js application with payment integration',
-      status: 'Completed',
-      tags: ['React', 'Node.js', 'MongoDB'],
-      progress: 100,
-    },
-    {
-      id: 2,
-      title: 'AI Chat Application',
-      description: 'Real-time chat with AI-powered responses using WebSocket',
-      status: 'In Progress',
-      tags: ['React', 'FastAPI', 'PostgreSQL'],
-      progress: 75,
-    },
-    {
-      id: 3,
-      title: 'Mobile Weather App',
-      description: 'Cross-platform mobile app with real-time weather data',
-      status: 'Completed',
-      tags: ['React Native', 'Redux', 'API'],
-      progress: 100,
-    },
-    {
-      id: 4,
-      title: 'Data Analytics Dashboard',
-      description: 'Interactive dashboard for business intelligence and analytics',
-      status: 'Completed',
-      tags: ['Next.js', 'Chart.js', 'PostgreSQL'],
-      progress: 100,
-    },
-  ]
+const partnerBrands = [
+  { name: 'Meta', href: 'https://www.meta.com' },
+  { name: 'Google', href: 'https://about.google' },
+  { name: 'LinkedIn', href: 'https://www.linkedin.com' },
+  { name: 'Slack', href: 'https://slack.com' },
+]
 
-  const skills = [
-    { category: 'Frontend', items: ['React', 'Next.js', 'Tailwind CSS', 'Vue.js'] },
-    { category: 'Backend', items: ['Node.js', 'Python', 'PostgreSQL', 'MongoDB'] },
-    { category: 'Tools', items: ['Git', 'Docker', 'AWS', 'Figma'] },
-    { category: 'Other', items: ['UI/UX Design', 'Agile', 'REST APIs', 'GraphQL'] },
-  ]
+const impactStats = [
+  { value: '250+', label: 'Projects Completed' },
+  { value: '100+', label: 'Satisfied Clients' },
+  { value: '10+', label: 'Years Experience' },
+]
 
-  const tabs = [
-    { id: 'overview', label: 'Overview' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-  ]
+const services = [
+  {
+    title: 'UI/UX Design',
+    category: 'UI/UX',
+    projects: '77 projects',
+    detail: 'Flow mapping, visual systems, and clickable prototypes for product teams.',
+  },
+  {
+    title: 'Front End Development',
+    category: 'Frontend',
+    projects: '48 projects',
+    detail: 'Accessible, high-performance interfaces built with modern React ecosystems.',
+  },
+  {
+    title: 'Mobile App Development',
+    category: 'Mobile',
+    projects: '32 projects',
+    detail: 'Cross-platform mobile products with scalable architecture and clear UX.',
+  },
+]
+
+const capabilityCards = [
+  {
+    title: 'Product Design',
+    text: 'A design-first workflow that turns ideas into polished and testable product journeys.',
+    href: '/portfolio#design',
+  },
+  {
+    title: 'Web Development',
+    text: 'Fast websites with component-driven architecture and thoughtful content strategy.',
+    href: '/portfolio#web',
+  },
+  {
+    title: 'Mobile Experiences',
+    text: 'Native-feeling mobile interfaces designed for retention, speed, and clarity.',
+    href: '/portfolio#mobile',
+  },
+]
+
+const workingCategories = ['All', 'UI/UX', 'Frontend', 'Mobile']
+
+export default function DashboardPage() {
+  const [activeCategory, setActiveCategory] = useState('All')
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeServiceByCategory, setActiveServiceByCategory] = useState({ All: services[0].title })
+
+  const filteredServices = useMemo(() => {
+    if (activeCategory === 'All') {
+      return services
+    }
+
+    return services.filter((service) => service.category === activeCategory)
+  }, [activeCategory])
+  const activeService = activeServiceByCategory[activeCategory] ?? filteredServices[0]?.title ?? ''
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 to-neutral-100 dark:from-neutral-900 dark:to-neutral-800 p-md sm:p-lg">
-      <div className="container max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="mb-2xl">
-          <div className="flex items-center justify-between mb-md">
-            <div>
-              <h1 className="text-4xl sm:text-5xl font-bold text-neutral-900 dark:text-white mb-sm">
-                Portfolio Dashboard
-              </h1>
-              <p className="text-lg text-neutral-600 dark:text-neutral-300">
-                Welcome back! Here's your development summary.
-              </p>
-            </div>
-            <div className="hidden sm:block text-5xl">📊</div>
-          </div>
+    <main className="min-h-screen bg-[#222238] text-slate-100">
+      <div className="relative isolate overflow-hidden">
+        <div
+          className="pointer-events-none absolute -left-20 top-12 h-80 w-80 rounded-full opacity-40 blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(127,129,166,0.65) 0%, rgba(34,34,56,0) 70%)',
+          }}
+        />
+        <div
+          className="pointer-events-none absolute -right-20 top-28 h-96 w-96 rounded-full opacity-40 blur-3xl"
+          style={{
+            background: 'radial-gradient(circle, rgba(92,97,138,0.7) 0%, rgba(34,34,56,0) 72%)',
+          }}
+        />
 
-          {/* Stats Grid */}
-          <div className="grid dark grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg mt-xl">
-            {stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className={`card bg-gradient-to-br from-${stat.color}-50 to-${stat.color}-100 dark:from-${stat.color}-900 dark:to-${stat.color}-800 border-l-4 border-${stat.color}-600`}
-              >
-                <div className="flex items-center justify-between">
-                  <div>
-                    <p className="text-sm font-medium text-neutral-600 dark:text-neutral-400 mb-sm">
-                      {stat.label}
-                    </p>
-                    <p className="text-3xl font-bold text-neutral-900 dark:text-white">
-                      {stat.value}
-                    </p>
+        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+          <section className="animate-fade-in rounded-[2rem] border border-white/10 bg-[#2a2b42]/95 p-4 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.95)] sm:p-6 lg:p-8">
+            <div className="grid gap-6 lg:grid-cols-[2.2fr_1fr]">
+              <div className="rounded-3xl border border-white/10 bg-[#2d2e45] p-4 sm:p-6">
+                <header className="relative rounded-2xl border border-white/10 bg-[#222338] px-4 py-3">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2.5 w-2.5 rounded-full bg-amber-300" />
+                      <span className="text-sm font-semibold text-slate-100">Adams</span>
+                    </div>
+
+                    <ul className="hidden items-center gap-5 text-[11px] uppercase tracking-[0.18em] text-slate-400 md:flex">
+                      {navigation.map((item) => (
+                        <li key={item.href}>
+                          <Link href={item.href} className="transition-colors hover:text-amber-200">
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <div className="hidden items-center gap-2 md:flex">
+                      {socialLinks.map((item) => (
+                        <a
+                          key={item.href}
+                          href={item.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:border-amber-200/40 hover:text-amber-100"
+                          aria-label={item.label}
+                        >
+                          {item.short}
+                        </a>
+                      ))}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={() => setIsMenuOpen((value) => !value)}
+                      className="rounded-lg border border-white/15 p-1.5 text-slate-300 md:hidden"
+                      aria-label="Toggle menu"
+                    >
+                      <svg viewBox="0 0 24 24" className="h-5 w-5 fill-none stroke-current stroke-[1.8]">
+                        {isMenuOpen ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+                      </svg>
+                    </button>
                   </div>
-                  <span className="text-4xl opacity-80">{stat.icon}</span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
 
-        {/* Tab Navigation */}
-        <div className="flex gap-md mb-xl border-b border-neutral-200 dark:border-neutral-700">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`pb-md px-md font-medium transition-all duration-200 border-b-2 -mb-px ${
-                activeTab === tab.id
-                  ? 'border-primary-600 text-primary-600 dark:text-primary-400'
-                  : 'border-transparent text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-200'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+                  {isMenuOpen && (
+                    <ul className="mt-3 space-y-2 rounded-xl border border-white/10 bg-[#2d2e45] p-3 text-sm md:hidden">
+                      {navigation.map((item) => (
+                        <li key={`mobile-${item.href}`}>
+                          <Link
+                            href={item.href}
+                            className="block rounded-lg px-3 py-2 text-slate-300 transition-colors hover:bg-white/5 hover:text-amber-100"
+                            onClick={() => setIsMenuOpen(false)}
+                          >
+                            {item.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </header>
 
-        {/* Tab Content */}
-        <div className="animate-fadeIn">
-          {/* Overview Tab */}
-          {activeTab === 'overview' && (
-            <div className="dark space-y-xl">
-              <div className="card">
-                <h2 className="text-2xl font-bold text-neutral-900 dark:text-white mb-md">
-                  Recent Activity
-                </h2>
-                <div className="space-y-md">
-                  {[
-                    { title: 'Completed Project: E-Commerce Platform', time: '2 days ago' },
-                    { title: 'Started AI Chat Application', time: '1 week ago' },
-                    { title: 'Updated Portfolio Website', time: '2 weeks ago' },
-                  ].map((activity, idx) => (
-                    <div key={idx} className="flex items-start gap-md pb-md border-b border-neutral-200 dark:border-neutral-700 last:border-b-0 last:pb-0">
-                      <div className="w-2 h-2 rounded-full bg-primary-600 mt-1.5 flex-shrink-0"></div>
-                      <div className="flex-grow">
-                        <p className="font-medium text-neutral-900 dark:text-white">{activity.title}</p>
-                        <p className="text-sm text-neutral-500 dark:text-neutral-400">{activity.time}</p>
+                <div id="hero" className="mt-6 grid gap-6 border-b border-white/10 pb-6 lg:grid-cols-[1.25fr_0.9fr]">
+                  <div className="animate-slide-up">
+                    <p className="text-3xl leading-tight text-slate-300">I&apos;m</p>
+                    <h1 className="mt-1 text-4xl font-bold leading-tight text-white sm:text-5xl">James Adams</h1>
+                    <p className="mt-4 max-w-md text-sm leading-6 text-slate-300/90">
+                      A freelancer who builds premium digital products for startups and modern teams.
+                      Blending design, development, and strategy into measurable outcomes.
+                    </p>
+
+                    <div className="mt-6 rounded-2xl border border-amber-300/20 bg-[#232438] p-4">
+                      <p className="text-xs uppercase tracking-[0.2em] text-amber-100/75">Services</p>
+                      <p className="mt-2 text-base font-medium text-slate-100">
+                        Let&apos;s build quality products in programming and design with my services.
+                      </p>
+                      <Link
+                        href="/portfolio"
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-200 transition-colors hover:text-amber-100"
+                      >
+                        show more
+                        <span aria-hidden>-&gt;</span>
+                      </Link>
+                    </div>
+                  </div>
+
+                  <div className="animate-float-soft mx-auto flex w-full max-w-xs items-end justify-center">
+                    <div className="relative h-72 w-full">
+                      <div
+                        className="absolute inset-0 rounded-[45%] border border-white/10"
+                        style={{
+                          background:
+                            'radial-gradient(circle at 40% 20%, rgba(94,97,128,0.85) 0%, rgba(41,44,67,1) 70%)',
+                        }}
+                      />
+                      <div
+                        className="absolute inset-x-8 bottom-0 h-[86%] rounded-t-[45%]"
+                        style={{
+                          background:
+                            'linear-gradient(180deg, rgba(106,137,176,1) 0%, rgba(52,72,102,1) 100%)',
+                        }}
+                      />
+                      <div className="absolute inset-x-0 bottom-4 text-center">
+                        <p className="text-lg font-semibold text-white">Portrait Preview</p>
+                        <p className="text-xs text-slate-300/90">Replace with your own image in production</p>
                       </div>
                     </div>
+                  </div>
+                </div>
+
+                <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+                  {partnerBrands.map((brand, index) => (
+                    <a
+                      key={brand.name}
+                      href={brand.href}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="animate-scale-in rounded-xl border border-white/10 bg-[#26273d] px-4 py-3 text-center text-sm font-semibold text-slate-300 transition-colors hover:border-amber-200/30 hover:text-amber-100"
+                      style={{ animationDelay: `${index * 90}ms` }}
+                    >
+                      {brand.name}
+                    </a>
+                  ))}
+                </div>
+
+                <div id="services" className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
+                  <div className="rounded-2xl border border-white/10 bg-[#232438] p-5">
+                    <h2 className="text-2xl font-semibold text-white">What Can I Do For Your Needs</h2>
+                    <p className="mt-3 text-sm leading-6 text-slate-300/85">
+                      It is easier to trust the work when every milestone is visible. I help teams ship
+                      high-quality products with practical design and focused engineering.
+                    </p>
+
+                    <div className="mt-5 grid grid-cols-3 gap-3">
+                      {impactStats.map((stat) => (
+                        <div key={stat.label}>
+                          <p className="text-2xl font-bold text-amber-200">{stat.value}</p>
+                          <p className="mt-1 text-[11px] uppercase tracking-[0.12em] text-slate-400">{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="rounded-2xl border border-white/10 bg-[#232438] p-5">
+                    <div className="flex flex-wrap gap-2">
+                      {workingCategories.map((category) => (
+                        <button
+                          key={category}
+                          type="button"
+                          onClick={() => setActiveCategory(category)}
+                          className={`rounded-full px-3 py-1.5 text-xs font-semibold tracking-[0.08em] transition-colors ${
+                            activeCategory === category
+                              ? 'bg-amber-200 text-slate-900'
+                              : 'border border-white/15 text-slate-300 hover:border-amber-200/40 hover:text-amber-100'
+                          }`}
+                        >
+                          {category}
+                        </button>
+                      ))}
+                    </div>
+
+                    <div className="mt-4 space-y-3">
+                      {filteredServices.map((service) => {
+                        const isOpen = activeService === service.title
+
+                        return (
+                          <article
+                            key={service.title}
+                            className="rounded-xl border border-white/10 bg-[#2b2c42] p-4 transition-transform duration-200 hover:-translate-y-0.5"
+                          >
+                            <button
+                              type="button"
+                              onClick={() =>
+                                setActiveServiceByCategory((current) => ({
+                                  ...current,
+                                  [activeCategory]: service.title,
+                                }))
+                              }
+                              className="flex w-full items-start justify-between gap-3 text-left"
+                              aria-expanded={isOpen}
+                            >
+                              <div>
+                                <h3 className="text-base font-semibold text-white">{service.title}</h3>
+                                <p className="mt-1 text-xs uppercase tracking-[0.12em] text-amber-100/85">
+                                  {service.projects}
+                                </p>
+                              </div>
+                              <span className="text-amber-200" aria-hidden>
+                                {isOpen ? '-' : '+'}
+                              </span>
+                            </button>
+
+                            {isOpen && (
+                              <p className="animate-fade-in mt-3 text-sm leading-6 text-slate-300/85">{service.detail}</p>
+                            )}
+
+                            <Link
+                              href="/portfolio"
+                              className="mt-3 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.08em] text-amber-200 hover:text-amber-100"
+                            >
+                              open case study
+                              <span aria-hidden>-&gt;</span>
+                            </Link>
+                          </article>
+                        )
+                      })}
+                    </div>
+                  </div>
+                </div>
+
+                <div id="capabilities" className="mt-6 grid gap-4 md:grid-cols-3">
+                  {capabilityCards.map((card, index) => (
+                    <article
+                      key={card.title}
+                      className="animate-slide-up rounded-2xl border border-white/10 bg-[#232438] p-5"
+                      style={{ animationDelay: `${index * 120}ms` }}
+                    >
+                      <span className="inline-block rounded-md bg-amber-200/15 px-2 py-1 text-xs font-bold uppercase tracking-[0.14em] text-amber-100">
+                        Core skill
+                      </span>
+                      <h3 className="mt-3 text-lg font-semibold text-white">{card.title}</h3>
+                      <p className="mt-2 text-sm leading-6 text-slate-300/85">{card.text}</p>
+                      <Link
+                        href={card.href}
+                        className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-amber-200 transition-colors hover:text-amber-100"
+                      >
+                        show more
+                        <span aria-hidden>-&gt;</span>
+                      </Link>
+                    </article>
                   ))}
                 </div>
               </div>
-            </div>
-          )}
 
-          {/* Projects Tab */}
-          {activeTab === 'projects' && (
-            <div className=" dark grid grid-cols-1 lg:grid-cols-2 gap-lg">
-              {projects.map((project) => (
-                <div key={project.id} className="card">
-                  <div className="flex items-start justify-between mb-md">
-                    <div>
-                      <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-sm">
-                        {project.title}
-                      </h3>
-                      <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                        {project.description}
-                      </p>
-                    </div>
-                    <span
-                      className={`text-xs font-bold px-md py-xs rounded-full ${
-                        project.status === 'Completed'
-                          ? 'bg-success-100 text-success-700 dark:bg-success-900 dark:text-success-300'
-                          : 'bg-warning-100 text-warning-700 dark:bg-warning-900 dark:text-warning-300'
-                      }`}
-                    >
-                      {project.status}
-                    </span>
+              <aside className="rounded-3xl border border-white/10 bg-[#232438] p-5">
+                <div className="rounded-2xl border border-white/10 bg-[#1f2033] p-4">
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-semibold text-slate-100">Adams</span>
+                    <Link href="/contact" className="rounded-lg border border-white/15 px-3 py-1.5 text-xs text-slate-300">
+                      Contact
+                    </Link>
                   </div>
 
-                  {/* Progress Bar */}
-                  <div className="mb-md">
-                    <div className="flex items-center justify-between mb-xs">
-                      <span className="text-xs font-medium text-neutral-600 dark:text-neutral-400">
-                        Progress
-                      </span>
-                      <span className="text-xs font-bold text-primary-600 dark:text-primary-400">
-                        {project.progress}%
-                      </span>
-                    </div>
-                    <div className="w-full h-2 bg-neutral-200 dark:bg-neutral-700 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-gradient-to-r from-primary-500 to-primary-600 transition-all duration-300"
-                        style={{ width: `${project.progress}%` }}
-                      ></div>
-                    </div>
+                  <div className="mt-5">
+                    <p className="text-2xl text-slate-300">I&apos;m</p>
+                    <h2 className="text-4xl font-bold text-white">James Adams</h2>
+                    <p className="mt-4 text-sm leading-6 text-slate-300/85">
+                      Freelance product builder for brands that need clean interfaces and reliable systems.
+                    </p>
                   </div>
 
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-sm">
-                    {project.tags.map((tag, idx) => (
-                      <span
-                        key={idx}
-                        className="text-xs font-medium px-sm py-xs rounded-md bg-primary-50 text-primary-700 dark:bg-primary-900 dark:text-primary-300"
+                  <div className="mt-5">
+                    <p className="text-xs uppercase tracking-[0.16em] text-amber-100/70">Services</p>
+                    <p className="mt-2 text-sm leading-6 text-slate-100">
+                      Let&apos;s build quality products in programming and design with my services.
+                    </p>
+                  </div>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {socialLinks.map((item) => (
+                      <a
+                        key={`side-${item.href}`}
+                        href={item.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="rounded-full border border-white/15 bg-white/5 px-2.5 py-1 text-[10px] font-medium text-slate-300 transition-colors hover:text-amber-100"
                       >
-                        {tag}
-                      </span>
+                        {item.short}
+                      </a>
                     ))}
                   </div>
-                </div>
-              ))}
-            </div>
-          )}
 
-          {/* Skills Tab */}
-          {activeTab === 'skills' && (
-            <div className="dark grid grid-cols-1 md:grid-cols-2 gap-lg">
-              {skills.map((skillGroup, idx) => (
-                <div key={idx} className="card">
-                  <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-md">
-                    {skillGroup.category}
-                  </h3>
-                  <div className="flex flex-wrap gap-sm">
-                    {skillGroup.items.map((skill, sidx) => (
-                      <span
-                        key={sidx}
-                        className="px-md py-sm bg-gradient-to-r from-primary-500 to-secondary-500 text-white font-medium rounded-lg text-sm hover:shadow-lg transition-shadow duration-200"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                  <div className="mt-6 rounded-2xl border border-white/10 bg-[#26273d] p-4">
+                    <div className="mx-auto h-44 w-full max-w-[220px]">
+                      <div className="relative h-full">
+                        <div
+                          className="absolute inset-0 rounded-[45%]"
+                          style={{
+                            background:
+                              'radial-gradient(circle at 40% 20%, rgba(94,97,128,0.85) 0%, rgba(41,44,67,1) 70%)',
+                          }}
+                        />
+                        <div
+                          className="absolute inset-x-6 bottom-0 h-[84%] rounded-t-[45%]"
+                          style={{
+                            background:
+                              'linear-gradient(180deg, rgba(106,137,176,1) 0%, rgba(52,72,102,1) 100%)',
+                          }}
+                        />
+                      </div>
+                    </div>
+
+                    <div className="mt-4 grid grid-cols-2 gap-2">
+                      {partnerBrands.map((brand) => (
+                        <a
+                          key={`mobile-${brand.name}`}
+                          href={brand.href}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="rounded-lg border border-white/10 bg-[#222338] px-2 py-2 text-center text-xs font-semibold text-slate-300 transition-colors hover:text-amber-100"
+                        >
+                          {brand.name}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-6 rounded-2xl border border-white/10 bg-[#26273d] p-4">
+                    <h3 className="text-xl font-semibold text-white">What Can I Do For Your Needs</h3>
+                    <div className="mt-4 grid grid-cols-3 gap-2">
+                      {impactStats.map((stat) => (
+                        <div key={`mobile-${stat.label}`}>
+                          <p className="text-lg font-bold text-amber-200">{stat.value}</p>
+                          <p className="text-[10px] uppercase tracking-[0.1em] text-slate-400">{stat.label}</p>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              ))}
+
+                <div className="mt-5 flex items-center justify-between rounded-2xl border border-amber-200/20 bg-amber-200/10 px-4 py-3">
+                  <div>
+                    <p className="text-sm font-semibold text-amber-100">Need a custom version?</p>
+                    <p className="text-xs text-amber-100/75">Swap content with your profile details.</p>
+                  </div>
+                  <Link
+                    href="/"
+                    className="rounded-lg bg-amber-200 px-3 py-2 text-xs font-bold uppercase tracking-[0.08em] text-slate-900 transition-colors hover:bg-amber-100"
+                  >
+                    Home
+                  </Link>
+                </div>
+              </aside>
             </div>
-          )}
+          </section>
         </div>
       </div>
-    </div>
+    </main>
   )
 }

@@ -12,13 +12,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio Dashboard | Full Stack Developer",
-  description: "Showcase of my projects and skills. Built with Next.js, React, and Tailwind CSS.",
-  keywords: ["portfolio", "developer", "full stack", "next.js", "react"],
-  author: "Your Name",
+  title: "James Adams Portfolio | Product Designer and Frontend Developer",
+  description: "Multi-page portfolio with case studies, testimonials, about, and contact experience.",
+  keywords: ["portfolio", "product designer", "frontend developer", "next.js", "tailwind"],
+  author: "James Adams",
   openGraph: {
-    title: "Portfolio Dashboard",
-    description: "Full Stack Developer Portfolio",
+    title: "James Adams Portfolio",
+    description: "Portfolio website with dashboard, case studies, testimonials, and contact page.",
     type: "website",
   },
 };
