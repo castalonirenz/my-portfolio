@@ -1,11 +1,6 @@
 import Link from 'next/link'
 
-const navigation = [
-  { label: 'Dashboard', href: '/dashboard' },
-  { label: 'Portfolio', href: '/portfolio' },
-  { label: 'About', href: '/about' },
-  { label: 'Contact', href: '/contact' },
-]
+import SiteHeader from '@/components/site-header'
 
 const highlights = [
   {
@@ -27,9 +22,9 @@ const highlights = [
 ]
 
 const projects = [
-  { name: 'Rnz App', type: 'Frontend + Backend', description: 'Financial tracker/monitoring.' },
-  { name: 'Official Ride Share', type: 'Frontend + Backend', description: 'Ride sharing' },
-  { name: 'Internal projects', type: 'Frontend', description: 'Cannot disclose firm policy.' },
+  { name: 'Rnz App', type: 'Frontend + Backend', description: 'Financial tracker and monitoring.' },
+  { name: 'Official Ride Share', type: 'Frontend + Backend', description: 'Ride sharing application for teams.' },
+  { name: 'Internal projects', type: 'Frontend', description: 'Cannot disclose details due to firm policy.' },
 ]
 
 export default function HomePage() {
@@ -40,19 +35,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -right-20 top-36 h-96 w-96 rounded-full bg-amber-400/15 blur-3xl" />
 
         <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
-          <header className="animate-fade-in flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900/70 px-5 py-4 backdrop-blur">
-            <Link href="/" className="text-lg font-bold tracking-wide text-white">
-              Renz Castaloni
-            </Link>
-
-            <nav className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
-              {navigation.map((item) => (
-                <Link key={item.href} href={item.href} className="rounded-lg px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">
-                  {item.label}
-                </Link>
-              ))}
-            </nav>
-          </header>
+          <SiteHeader />
 
           <section className="mt-8 grid gap-10 lg:grid-cols-[1.25fr_0.9fr] lg:items-center">
             <div className="animate-slide-up">
@@ -61,11 +44,15 @@ export default function HomePage() {
               </p>
 
               <h1 className="mt-5 text-4xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
-                I am a Frontend Developer 
+                I am a Frontend Developer
               </h1>
 
               <p className="mt-5 max-w-2xl text-base leading-7 text-slate-300">
-               "dedicated to building high-quality digital products using React and Next.js. I bring an intermediate understanding of backend systems, including Node.js, Laravel, and FastAPI, which allows me to develop seamless, data-driven interfaces. My experience extends to managing MySQL and MongoDB databases, ensuring that every design I ship is supported by efficient, well-integrated server logic."
+                Dedicated to building high-quality digital products using React and Next.js. I bring an
+                intermediate understanding of backend systems, including Node.js, Laravel, and FastAPI, which
+                allows me to develop seamless, data-driven interfaces. My experience extends to managing MySQL and
+                MongoDB databases, ensuring that every design I ship is supported by efficient, well-integrated
+                server logic.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
@@ -79,7 +66,6 @@ export default function HomePage() {
 
               <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 rounded-2xl border border-white/10 bg-slate-900/60 p-4">
                 <div>
-                  
                   <p className="text-2xl font-bold text-white">9</p>
                   <p className="text-xs uppercase tracking-[0.1em] text-slate-400">Projects</p>
                 </div>
@@ -101,7 +87,12 @@ export default function HomePage() {
               </p>
 
               <div className="mt-5 space-y-3">
-                {navigation.map((item) => (
+                {[
+                  { label: 'Dashboard', href: '/dashboard' },
+                  { label: 'Portfolio', href: '/portfolio' },
+                  { label: 'About', href: '/about' },
+                  { label: 'Contact', href: '/contact' },
+                ].map((item) => (
                   <Link
                     key={`panel-${item.href}`}
                     href={item.href}

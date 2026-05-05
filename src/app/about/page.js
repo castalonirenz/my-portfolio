@@ -1,12 +1,6 @@
 import Link from 'next/link'
 
-const navigation = [
-  { label: 'Home', href: '/' },
-  { label: 'Dashboard', href: '/dashboard' },
-  { label: 'Portfolio', href: '/portfolio' },
-  // { label: 'Testimonials', href: '/testimonials' },
-  { label: 'Contact', href: '/contact' },
-]
+import SiteHeader from '@/components/site-header'
 
 const timeline = [
   {
@@ -44,19 +38,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-slate-950 text-slate-100">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
-        <header className="animate-fade-in flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-900/70 px-5 py-4">
-          <Link href="/" className="text-lg font-bold tracking-wide text-white">
-            Renz Castaloni
-          </Link>
-
-          <nav className="flex flex-wrap items-center gap-3 text-sm text-slate-300">
-            {navigation.map((item) => (
-              <Link key={item.href} href={item.href} className="rounded-lg px-3 py-2 transition-colors hover:bg-white/10 hover:text-white">
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </header>
+        <SiteHeader />
 
         <section className="mt-10 grid gap-10 lg:grid-cols-[1.2fr_0.9fr]">
           <div className="animate-slide-up">
