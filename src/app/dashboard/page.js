@@ -99,27 +99,27 @@ export default function DashboardPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#222238] text-slate-100">
+    <main className="min-h-screen bg-slate-950 text-slate-100">
       <div className="relative isolate overflow-hidden">
         <div
           className="pointer-events-none absolute -left-20 top-12 h-80 w-80 rounded-full opacity-40 blur-3xl"
           style={{
-            background: 'radial-gradient(circle, rgba(127,129,166,0.65) 0%, rgba(34,34,56,0) 70%)',
+            background: 'radial-gradient(circle, rgba(59,130,246,0.35) 0%, rgba(15,23,42,0) 70%)',
           }}
         />
         <div
           className="pointer-events-none absolute -right-20 top-28 h-96 w-96 rounded-full opacity-40 blur-3xl"
           style={{
-            background: 'radial-gradient(circle, rgba(92,97,138,0.7) 0%, rgba(34,34,56,0) 72%)',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.25) 0%, rgba(15,23,42,0) 72%)',
           }}
         />
 
-        <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
+        <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-10 lg:py-12">
           <SiteHeader />
 
-          <section className="animate-fade-in mt-6 rounded-[2rem] border border-white/10 bg-[#2a2b42]/95 p-4 shadow-[0_40px_90px_-40px_rgba(0,0,0,0.95)] sm:p-6 lg:p-8">
+          <section className="animate-fade-in mt-6 rounded-[2rem] border border-white/10 bg-slate-900/80 p-4 shadow-lg shadow-slate-950/40 sm:p-6 lg:p-8">
             <div className="grid gap-6 lg:grid-cols-[2.2fr_1fr]">
-              <div className="rounded-3xl border border-white/10 bg-[#2d2e45] p-4 sm:p-6">
+              <div className="rounded-3xl border border-white/10 bg-slate-900/70 p-4 sm:p-6">
                 <div className="mt-2 grid gap-6 border-b border-white/10 pb-6 lg:grid-cols-[1.25fr_0.9fr]">
                   <div className="animate-slide-up">
                     <p className="text-3xl leading-tight text-slate-300">I&apos;m</p>
@@ -127,7 +127,7 @@ export default function DashboardPage() {
                     <p className="mt-3 text-base font-medium text-amber-200">{cvData.role}</p>
                     <p className="mt-4 max-w-md text-sm leading-6 text-slate-300/90">{siteProfile.summary}</p>
 
-                    <div className="mt-6 rounded-2xl border border-amber-300/20 bg-[#232438] p-4">
+                    <div className="mt-6 rounded-2xl border border-amber-300/20 bg-slate-900/80 p-4">
                       <p className="text-xs uppercase tracking-[0.2em] text-amber-100/75">Profile Hub</p>
                       <p className="mt-2 text-base font-medium text-slate-100">
                         This dashboard now acts as your profile page with live project metrics and downloadable CV output.
@@ -170,7 +170,7 @@ export default function DashboardPage() {
                   {featuredCards.map((project, index) => (
                     <article
                       key={project.id}
-                      className="animate-scale-in rounded-xl border border-white/10 bg-[#26273d] px-4 py-3"
+                      className="animate-scale-in rounded-xl border border-white/10 bg-slate-800/70 px-4 py-3"
                       style={{ animationDelay: `${index * 90}ms` }}
                     >
                       <p className="text-xs uppercase tracking-[0.11em] text-amber-200">{project.category}</p>
@@ -180,7 +180,7 @@ export default function DashboardPage() {
                 </div>
 
                 <div className="mt-8 grid gap-6 lg:grid-cols-[1fr_1.2fr]">
-                  <div className="rounded-2xl border border-white/10 bg-[#232438] p-5">
+                  <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
                     <h2 className="text-2xl font-semibold text-white">Current Project Mix</h2>
                     <p className="mt-3 text-sm leading-6 text-slate-300/85">
                       The dashboard metrics reflect your portfolio entries so project categories stay consistent across pages.
@@ -196,7 +196,7 @@ export default function DashboardPage() {
                     </div>
                   </div>
 
-                  <div className="rounded-2xl border border-white/10 bg-[#232438] p-5">
+                  <div className="rounded-2xl border border-white/10 bg-slate-900/70 p-5">
                     <div className="flex flex-wrap gap-2">
                       {portfolioCategories
                         .filter((category) => category !== 'UI/UX')
@@ -223,7 +223,7 @@ export default function DashboardPage() {
                         return (
                           <article
                             key={service.category}
-                            className="rounded-xl border border-white/10 bg-[#2b2c42] p-4 transition-transform duration-200 hover:-translate-y-0.5"
+                            className="rounded-xl border border-white/10 bg-slate-800/70 p-4 transition-transform duration-200 hover:-translate-y-0.5"
                           >
                             <button
                               type="button"
@@ -259,8 +259,8 @@ export default function DashboardPage() {
                 </div>
               </div>
 
-              <aside className="rounded-3xl border border-white/10 bg-[#232438] p-5">
-                <div className="rounded-2xl border border-white/10 bg-[#1f2033] p-4">
+              <aside className="rounded-3xl border border-white/10 bg-slate-900/70 p-5">
+                <div className="rounded-2xl border border-white/10 bg-slate-900/80 p-4">
                   <h2 className="text-lg font-semibold text-white">Profile and CV</h2>
                   <p className="mt-2 text-sm text-slate-300">Generate and download your CV directly from this dashboard.</p>
 
@@ -289,13 +289,13 @@ export default function DashboardPage() {
                   </div>
 
                   {showCvPreview && (
-                    <pre className="animate-fade-in mt-4 max-h-72 overflow-auto rounded-xl border border-white/10 bg-[#26273d] p-3 text-xs leading-5 text-slate-200">
+                    <pre className="animate-fade-in mt-4 max-h-72 overflow-auto rounded-xl border border-white/10 bg-slate-800/70 p-3 text-xs leading-5 text-slate-200">
                       {cvText}
                     </pre>
                   )}
                 </div>
 
-                <div className="mt-5 rounded-2xl border border-white/10 bg-[#1f2033] p-4">
+                <div className="mt-5 rounded-2xl border border-white/10 bg-slate-900/80 p-4">
                   <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-amber-100">Social Links</h3>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {socialLinks.map((item) =>
@@ -337,12 +337,12 @@ export default function DashboardPage() {
                   </div>
                 </div>
 
-                <div className="mt-5 rounded-2xl border border-white/10 bg-[#1f2033] p-4">
+                <div className="mt-5 rounded-2xl border border-white/10 bg-slate-900/80 p-4">
                   <h3 className="text-sm font-semibold uppercase tracking-[0.12em] text-amber-100">Latest Portfolio Entries</h3>
 
                   <div className="mt-3 space-y-3">
                     {filteredProjects.slice(0, 4).map((project) => (
-                      <article key={`side-${project.id}`} className="rounded-lg border border-white/10 bg-[#26273d] p-3">
+                      <article key={`side-${project.id}`} className="rounded-lg border border-white/10 bg-slate-800/70 p-3">
                         <p className="text-xs uppercase tracking-[0.1em] text-amber-200">{project.category}</p>
                         <h4 className="mt-1 text-sm font-semibold text-white">{project.title}</h4>
                         <p className="mt-2 text-xs text-slate-300">{project.summary}</p>
