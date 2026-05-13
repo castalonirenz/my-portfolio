@@ -12,20 +12,29 @@ export const mainNavigation = [
   { label: 'Home', href: '/' },
   { label: 'Dashboard', href: '/dashboard' },
   { label: 'Portfolio', href: '/portfolio' },
-  { label: 'Testimonials', href: '/testimonials' },
+  // { label: 'Testimonials', href: '/testimonials' },
   { label: 'About', href: '/about' },
   { label: 'Contact', href: '/contact' },
 ]
 
 export const socialLinks = [
-  { short: 'Gh', label: 'GitHub', href: 'https://github.com/castalonirenz' },
-  { short: 'In', label: 'LinkedIn', href: 'https://www.linkedin.com' },
+  { short: 'GIT', label: 'GitHub', href: 'https://github.com/castalonirenz' },
+  { short: 'In', label: 'LinkedIn', href: 'https://www.linkedin.com/in/renz-castaloni-a80a62166/' },
   { short: 'Mail', label: 'Email', href: '/contact' },
 ]
 
 export const portfolioCategories = ['All', 'UI/UX', 'Frontend', 'Backend', 'Mobile']
 
 export const portfolioProjects = [
+  {
+    id: 'digital-portfolio',
+    title: 'Digital Insurance Portfolio',
+    category: 'Frontend',
+    summary: 'Financial tracker and monitoring application.',
+    url: 'https://danlouiedecena.vercel.app',
+    repo: 'https://github.com/castalonirenz/DigitalInsurancePortfolio',
+    stack: ['Next.js', 'React', 'Tailwind CSS'],
+  },
   {
     id: 'rnz-app',
     title: 'Rnz App',
